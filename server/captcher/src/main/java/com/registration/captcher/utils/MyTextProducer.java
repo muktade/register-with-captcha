@@ -17,6 +17,7 @@ public class MyTextProducer implements TextProducer {
 		this.setAnswer(sum);
 		StringBuffer cap = new StringBuffer();
 		cap.append(r1 + " + " +r2 +" = ?");
+		
 		System.out.println(cap.toString());
 		return cap.toString();
 	}
