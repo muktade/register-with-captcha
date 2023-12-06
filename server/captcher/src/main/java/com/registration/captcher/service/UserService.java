@@ -17,9 +17,13 @@ public class UserService {
 	private UserRepo repo;
 	
 	
-	public void createUser(User user) {
+//	public void createUser(User user) {
+//
+//		repo.save(user);
+//	}
+	public User createUser(User user) {
 
-		repo.save(user);
+		return repo.save(user);
 	}
 
 	public List<User> getAllUsers() {

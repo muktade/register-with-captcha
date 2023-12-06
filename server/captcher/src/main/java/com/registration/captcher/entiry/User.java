@@ -1,13 +1,13 @@
 package com.registration.captcher.entiry;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name = "t_user")
+@Table(name = "t_user1")
 public class User {
 	@Id
 	@GeneratedValue

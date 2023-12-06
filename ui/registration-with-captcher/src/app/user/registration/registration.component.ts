@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -8,7 +8,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-
+  
   userForm = this.fb.group({
     id: '',
     name: '',
@@ -18,17 +18,19 @@ export class RegistrationComponent implements OnInit {
     realCaptcha: '',
   });
   img: any;
-
-  constructor(private fb: FormBuilder, private http: HttpClient) {
-
+  
+  constructor(private fb: FormBuilder, private userService: UserService) {
+    
   }
   ngOnInit(): void {
     this.loadregiCaptcha();
   }
 
-
+  
   loadregiCaptcha(){
-    this.http.get('http://localhost:8080/user/register').subscribe((res:any)=>{
+    const payload = this.userForm.value;
+    debugger
+    this.userService.post('/user/register', payload).subscribe((res:any)=>{
       debugger
       console.log('res ', res);
       this.img = res;
@@ -37,4 +39,12 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+  save() {
+    const payload = this.userForm.value;
+    this.userService.post('/user/save',payload).subscribe((res:any)=>{
+      debugger
+      console.log('res ', res);
+      this.img = res;
+    });
+  }
 }
