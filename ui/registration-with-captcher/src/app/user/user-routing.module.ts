@@ -6,6 +6,9 @@ import { ViewComponent } from './view/view.component';
 const routes: Routes = [
   {path:'registration', component:RegistrationComponent},
   {path:'view', component:ViewComponent},
+  {path:'', component:RegistrationComponent},
+  {path:'**', redirectTo:'registration'},
+  
 ];
 
 @NgModule({
