@@ -31,7 +31,7 @@
                         <label>CAPTCHA</label>
                     </div>
                     <div class="col-4">
-                        <img th:src="*{'data:realCaptcha/jpg;base64,'+ realCaptcha}" />
+                        <img [src]="'data:data/jpg;base64,'+ img?.realCaptcha" />
                     </div>
                 </div>
                 <br>
@@ -53,8 +53,9 @@
             </form>
             <br />
         </div>
-        <!-- <div th:if="${message!=null}" class="card-footer bg-info text-white">
-              <span class="alert alert-danger" th:text="${message}"></span> -->
-        <!-- </div> -->
+        <div *ngIf="userInfo?.errMsg || userInfo?.msg" class="card-footer text-white"
+            [ngClass]="userInfo.errMsg?'bg-warning':'bg-success'">
+            <span >{{userInfo.errMsg || userInfo.msg}}</span>
+        </div>
     </div>
 </div>

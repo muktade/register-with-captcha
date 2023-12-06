@@ -18,6 +18,7 @@ export class RegistrationComponent implements OnInit {
     realCaptcha: '',
   });
   img: any;
+  userInfo: any;
   
   constructor(private fb: FormBuilder, private userService: UserService) {
     
@@ -34,6 +35,7 @@ export class RegistrationComponent implements OnInit {
       debugger
       console.log('res ', res);
       this.img = res;
+      this.userForm.get('hiddenCaptcha')?.setValue(this.img.hiddenCaptcha);
     },(err:Error)=>{
       alert('getting error');
     });
@@ -45,6 +47,9 @@ export class RegistrationComponent implements OnInit {
       debugger
       console.log('res ', res);
       this.img = res;
+      this.userInfo = res;
+      this.userForm.get('hiddenCaptcha')?.setValue(res.hiddenCaptcha);
+      // this.userForm.get('hiddenCaptcha')?.setValue(res.hiddenCaptcha);
     });
   }
 }

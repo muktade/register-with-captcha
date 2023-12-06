@@ -21,37 +21,31 @@ import cn.apiclub.captcha.Captcha;
 
 @Controller
 @RequestMapping("/user")
-@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
+@CrossOrigin(origins = { "http://localhost:4200" }, allowCredentials = "true")
 @ResponseBody
 public class UserController {
 
 	@Autowired
 	private UserService service;
 
-	@GetMapping("/register")
-	public User registerUser() {
+	@PostMapping("/register")
+	public User registerUser(@RequestBody User use) {
 		User user = new User();
 		getCaptcha(user);
-//		model.addAttribute("user", user);
-//		return "registerUser";
-		System.out.println(user.getCaptcha());
 		return user;
 	}
 
 	@PostMapping("/save")
 	public User saveUser(@RequestBody User user) {
-		return service.createUser(user);
-		
-				//		if (user.getCaptcha().equals(user.getHiddenCaptcha())) {
-//			service.createUser(user);
-//			
-//			return user;
-//		} else {
-////			getCaptcha(user);
-////			model.addAttribute("user", user);
-//			return user;
-//		}
-//		return "registerUser";
+		if (user.getCaptcha().equals(user.getHiddenCaptcha())) {
+			service.createUser(user);
+			user.setMsg("user create successfull");
+			return user;
+		} else {
+			getCaptcha(user);
+			user.setErrMsg("capture not matched!");
+			return user;
+		}
 	}
 
 	@PostMapping("/allUsers")

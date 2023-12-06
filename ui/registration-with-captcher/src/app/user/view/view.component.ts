@@ -7,6 +7,7 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit{
+  userList: any;
 
   constructor(private us: UserService){
 
@@ -22,8 +23,8 @@ export class ViewComponent implements OnInit{
     this.us.post('/user/allUsers',{}).subscribe((res:any)=>{
       debugger
       console.log(res);
-      
-    })
+      this.userList = res;
+    });
   }
 
 }
