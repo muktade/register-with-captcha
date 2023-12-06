@@ -25,13 +25,13 @@ public class CaptchaUtil {
 	public static String encodeCaptcha(Captcha captcha) {
 		String img = null;
 		try {
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			ImageIO.write(captcha.getImage(), "jpg", bos);
-			byte[] byteArray = Base64.getEncoder().encode(bos.toByteArray());
-			img = new String(byteArray);
-//			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//            ImageIO.write(captcha.getImage(), "png", outputStream);
-//            return DatatypeConverter.printBase64Binary(outputStream.toByteArray());
+//			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//			ImageIO.write(captcha.getImage(), "jpg", bos);
+//			byte[] byteArray = Base64.getEncoder().encode(bos.toByteArray());
+//			img = new String(byteArray);
+			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            ImageIO.write(captcha.getImage(), "png", outputStream);
+            return DatatypeConverter.printBase64Binary(outputStream.toByteArray());
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

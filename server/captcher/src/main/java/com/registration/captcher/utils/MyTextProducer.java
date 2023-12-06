@@ -11,13 +11,13 @@ public class MyTextProducer implements TextProducer {
 	public String getText() {
 		
 		Random r = new Random();
-		int r1= r.nextInt(90)+10;
-		int r2 = r.nextInt(90)+10;
+		int r1= r.nextInt(10);
+		int r2 = r.nextInt(10);
 		int sum = r1+r2;
 		this.setAnswer(sum);
 		StringBuffer cap = new StringBuffer();
 		cap.append(r1 + " + " +r2 +" = ?");
-		
+		System.out.println(cap.toString());
 		return cap.toString();
 	}
 

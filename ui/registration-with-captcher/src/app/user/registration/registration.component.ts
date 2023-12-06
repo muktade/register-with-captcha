@@ -37,7 +37,7 @@ export class RegistrationComponent implements OnInit {
       this.img = res;
       this.userForm.get('hiddenCaptcha')?.setValue(this.img.hiddenCaptcha);
     },(err:Error)=>{
-      alert('getting error');
+      alert(err);
     });
   }
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.registration.captcher.entiry.User;
 import com.registration.captcher.service.UserService;
+import com.registration.captcher.utils.CaptchaGenerator;
 import com.registration.captcher.utils.CaptchaUtil;
 
 import cn.apiclub.captcha.Captcha;
@@ -56,7 +57,10 @@ public class UserController {
 	}
 
 	private void getCaptcha(User user) {
-		Captcha captcha = CaptchaUtil.createCaptcha(240, 70);
+//		Captcha captcha = CaptchaUtil.createCaptcha(240, 70);
+		CaptchaGenerator cg = new CaptchaGenerator();
+		Captcha captcha = cg.createCaptcha(240, 70);
+
 		user.setHiddenCaptcha(captcha.getAnswer());
 		user.setCaptcha(""); // value entered by the User
 		user.setRealCaptcha(CaptchaUtil.encodeCaptcha(captcha));

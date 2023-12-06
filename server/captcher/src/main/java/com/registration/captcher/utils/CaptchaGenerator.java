@@ -5,6 +5,7 @@ import org.springframework.beans.factory.InitializingBean;
 
 import cn.apiclub.captcha.Captcha;
 import cn.apiclub.captcha.backgrounds.BackgroundProducer;
+import cn.apiclub.captcha.backgrounds.GradiatedBackgroundProducer;
 import cn.apiclub.captcha.backgrounds.TransparentBackgroundProducer;
 import cn.apiclub.captcha.noise.CurvedLineNoiseProducer;
 import cn.apiclub.captcha.noise.NoiseProducer;
@@ -15,7 +16,7 @@ import cn.apiclub.captcha.text.renderer.WordRenderer;
 
 public class CaptchaGenerator implements InitializingBean {
 
-	private BackgroundProducer backgroundProducer=new TransparentBackgroundProducer();
+	private BackgroundProducer backgroundProducer=new GradiatedBackgroundProducer();
     private TextProducer textProducer=new MyTextProducer();
     private WordRenderer wordRenderer= new DefaultWordRenderer();
     private NoiseProducer noiseProducer=new CurvedLineNoiseProducer();
